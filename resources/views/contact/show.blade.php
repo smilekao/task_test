@@ -31,6 +31,8 @@
                     </form>
 
                     <form method="POST" action="{{ route('contact.destroy',['id' => $contact->id]) }}" id="delate_{{ $contact->id}}">
+
+
                     @csrf
                     <a htef="#" class="btn btn-danger" data-id="{{ $contact->id }}" onclick="deletePost(this);">削除する</a>
                     </form>
