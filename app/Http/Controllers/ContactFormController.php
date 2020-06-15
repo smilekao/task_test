@@ -172,13 +172,13 @@ class ContactFormController extends Controller
     public function destroy($id)
     {
         //
-        dd($id); // idの値がとれているか。とれていなければHTML側かルーティング側。 とれていればコメントアウト
+        //dd($id); // idの値がとれているか。とれていなければHTML側かルーティング側。 とれていればコメントアウト
 
 
 
         $contact = ContactForm::find($id);
 
-        dd($contact); // id指定でデータが取れているか、とれていなければDBにデータが無いかも。
+        //dd($contact); // id指定でデータが取れているか、とれていなければDBにデータが無いかも。
 
         $contact->delete();
 

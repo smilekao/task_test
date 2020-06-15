@@ -30,7 +30,7 @@
 
                     </form>
 
-                    <form method="POST" action="{{ route('contact.destroy',['id' => $contact->id]) }}" id="delate_{{ $contact->id}}">
+                    <form method="POST" action="{{ route('contact.destroy',['id' => $contact->id]) }}" id="delete_{{ $contact->id}}">
 
 
                     @csrf
