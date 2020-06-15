@@ -25,7 +25,8 @@ class ContactFormController extends Controller
         $contacts = DB::table('contact_forms')
         ->select('id','your_name','title','created_at')
         ->orderBy('created_at', 'desc')
-        ->get();
+        //->get(); 下のページネーションのために、コメントアウト
+        ->paginate(10);
 
         //dd($contacts);
 
