@@ -16,18 +16,47 @@ class ContactFormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //public function index(Request $request)
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+
+
+
         //エロクワント　ORマッパー
         //$contacts = ContactForm::all();
 
         //クエリビルダ
-        $contacts = DB::table('contact_forms')
-        ->select('id','your_name','title','created_at')
-        ->orderBy('created_at', 'desc')
-        ->get();
+        //$contacts = DB::table('contact_forms')
+        //->select('id','your_name','title','created_at')
+        //->orderBy('created_at', 'desc')
+        //->get(); 下のページネーションのために、コメントアウト
+        //->paginate(10);
 
         //dd($contacts);
+
+        //検索フォーム用
+        $query = DB::table('contact_forms');
+
+        //もしキーボードがあったら
+        if($search !== null){
+            //全角スペースを半角に
+            $search_split = mb_convert_kana($search,'s');
+
+            //空白で区切る
+            $search_split2 = preg_split('/[\s]+/',$search_split,-1,PREG_SPLIT_NO_EMPTY);
+
+            //単語をループで回す
+            foreach($search_split2 as $value)
+            {
+                $query->where('your_name','like','%'.$value.'%');
+            }
+
+        }
+
+        $query->select('id','your_name','title','created_at');
+        $query->orderBy('created_at', 'asc');
+        $contacts = $query->paginate(20);
 
         return view('contact.index',compact('contacts'));
     }
