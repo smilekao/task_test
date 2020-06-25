@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('tests/test','TestController@index');
 
+Route::get('shops/index','ShopController@index');
+
+
 //直接、indexに行く
 //Route::get('contact/index','ContactFormController@index');
 

@@ -19,10 +19,16 @@
                             新規登録
                         </button>
                     </form>
+
+                    <form method="GET" action="{{ route('contact.index') }}" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="検索">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索する</button>
+                    </form>
+
                     <table class="table">
                         <thead>
                             <tr>
-                                
+
                                 <th scope="col">id</th>
                                 <th scope="col">氏名</th>
                                 <th scope="col">件名</th>
